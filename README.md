@@ -10,7 +10,11 @@ accounts, and transactions using this SDK.
 
 To get started, install [Unity Hub](https://unity3d.com/get-unity/download) and the latest 2020.3 LTS version.
 
-Clone this project, then open the project directory with Unity. The correct version of the sdk should install
+Clone this branch with
+```bash
+> git clone https://github.com/CareBoo/unity-algorand-sdk --branch demo
+```
+then open the project directory with Unity. The correct version of the sdk should install
 as a package.
 
 ## Setup Algod
