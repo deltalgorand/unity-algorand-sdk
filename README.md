@@ -12,7 +12,7 @@ To get started, install [Unity Hub](https://unity3d.com/get-unity/download) and 
 
 Clone this branch with
 ```bash
-> git clone https://github.com/CareBoo/unity-algorand-sdk --branch demo
+> git clone -b demo https://github.com/CareBoo/unity-algorand-sdk
 ```
 then open the project directory with Unity. The correct version of the sdk should install
 as a package.
