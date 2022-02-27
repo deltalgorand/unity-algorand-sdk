@@ -8,13 +8,18 @@ public class AlgorandAccount : ScriptableObject
 {
     [SerializeField]
     string passPhrase;
-    
+
     [SerializeField]
     Algod algod;
 
     PrivateKey privateKey => Mnemonic.FromString(passPhrase).ToPrivateKey();
 
     public Address Address => privateKey.ToPublicKey();
+
+    public void OnEnable()
+    {
+        hideFlags = HideFlags.DontUnloadUnusedAsset;
+    }
 
     public Ed25519.KeyPair GetKeyPair()
     {
@@ -27,13 +32,13 @@ public class AlgorandAccount : ScriptableObject
         var randomPrivateKey = AlgoSdk.Crypto.Random.Bytes<PrivateKey>();
         passPhrase = randomPrivateKey.ToMnemonic().ToString();
     }
-    
+
     [ContextMenu(nameof(LogAccountInfo))]
     public void LogAccountInfo()
     {
         LogAccountInfoAsync().Forget();
     }
-    
+
     async UniTaskVoid LogAccountInfoAsync()
     {
         Debug.Log($"My account address: {Address}");

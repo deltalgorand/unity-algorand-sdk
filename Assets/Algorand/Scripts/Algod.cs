@@ -1,6 +1,6 @@
-using UnityEngine;
 using AlgoSdk;
 using Cysharp.Threading.Tasks;
+using UnityEngine;
 
 [CreateAssetMenu(fileName = "NewAlgod", menuName = "Algorand/Create Algod Client")]
 public class Algod : ScriptableObject
@@ -16,8 +16,8 @@ public class Algod : ScriptableObject
     async UniTaskVoid TestConnectionAsync()
     {
         var resp = await Client.GetHealth();
-        if (resp.Error.IsError)
-            Debug.LogError(resp.Error.Message);
+        if (resp.Error)
+            Debug.LogError(resp.Error);
         else
             Debug.Log($"Algod connection is {resp.Status}");
     }
@@ -46,5 +46,10 @@ public class Algod : ScriptableObject
         }
 
         return pending;
+    }
+
+    public void OnEnable()
+    {
+        hideFlags = HideFlags.DontUnloadUnusedAsset;
     }
 }
